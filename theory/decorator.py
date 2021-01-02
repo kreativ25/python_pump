@@ -1,22 +1,27 @@
-import datetime as dt
+
+def decorator(func):
+    """
+    Описание декоратора \n
+    :param func:
+    :return:
+    """
+    def f(*args, **kwargs):
+        print('start')
+        d = func(*args, **kwargs)*2
+        print(d)
+        print('end')
+
+    return f
 
 
-def timeit(func):
-    def result(*args, **kwargs):
-
-        start = dt.datetime.now()
-        f = func(*args, **kwargs)
-
-        print(dt.datetime.now() - start)
-        return f
-
-    return result
-
-
-@timeit
+@decorator
 def test(n):
-    k = [i**i for i in range(n*2)]
+    k = [i ** i for i in range(n * 2)]
+    print(k)
     return k
 
 
-y = test(4)
+y = test(3)
+
+# print(test(3))
+
